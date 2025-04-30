@@ -12,7 +12,6 @@ public class ClickableObject : MonoBehaviour
     void Awake()
     {
         outline = GetComponent<Outline>();
-        outline.OutlineMode = Outline.Mode.OutlineHidden;
     }
 
     // Update is called once per frame
@@ -29,11 +28,11 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        outline.OutlineMode = Outline.Mode.OutlineAll;
+        outline.OutlineWidth = 2f;
     }
 
     private void OnMouseExit()
     {
-        outline.OutlineMode = Outline.Mode.OutlineHidden;
+        outline.OutlineWidth = 0f;
     }
 }
