@@ -1,0 +1,52 @@
+﻿title: BattleOptions
+---
+Start
+<<declare $voidHealth = 50>>
+<<declare $sproutHealth = 100>>
+<<declare $attackAmt = 0>>
+
+-> Attack
+    <<jump Fight>>
+-> Act
+    <<jump Act>>
+===
+
+title: Fight
+---
+SproutAttack
+<<set $attackAmt = round(random_range(1, 5))>>
+<<set $voidHealth = $voidHealth - $attackAmt>>
+SproutDmg: {$attackAmt}
+VoidHealth: {$voidHealth}
+
+<<if $voidHealth <= 0>>
+    <<jump VoidDeath>>
+<<endif>>
+
+VoidAttack
+<<set $attackAmt = round(random_range(10, 15))>>
+<<set $sproutHealth = $sproutHealth - $attackAmt>>
+VoidDmg: {$attackAmt}
+SproutHealth: {$sproutHealth}
+
+<<if $sproutHealth <= 0>>
+    <<jump SproutDeath>>
+<<endif>>
+
+<<jump BattleOptions>>
+===
+
+title: Act
+---
+Test
+===
+
+title: SproutDeath
+---
+Sprout Died
+===
+
+title: VoidDeath
+---
+Void Died
+===

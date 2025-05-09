@@ -3,37 +3,46 @@ using UnityEngine.InputSystem;
 
 public class SproutController : MonoBehaviour
 {
+    [SerializeField] private GameObject pointer;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float moveAcceleration = 5f;
     
     private Camera cam;
     Rigidbody rb;
-    
-    InputAction moveAction;
+
+    private Vector3 destination;
     
     void Start()
     {
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
-        moveAction = InputSystem.actions.FindAction("Move");
     }
 
     // Update is called once per frame
     void Update()
-    {
-        Vector2 moveVector = moveAction.ReadValue<Vector2>();
+    { 
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Vector3 targetDirection = hit.point - transform.position;
+                targetDirection.y = 0f; // prevent tilting up/down
+                Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
+                transform.rotation = lookRotation;
+                
+                destination = hit.point;
+                destination.y = 0f;
+                
+                pointer.transform.position = destination;
+            }
+        }
         
-        Vector3 camRight = cam.transform.right;
-        camRight.y = 0;
-        camRight.Normalize();
-        
-        Vector3 camForward = cam.transform.forward;
-        camForward.y = 0;
-        camForward.Normalize();
-        
-        Vector3 newVelocity = camRight * (moveSpeed * moveVector.x) + camForward * (moveVector.y * moveSpeed);
-        newVelocity.y = rb.linearVelocity.y;
-        
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, newVelocity, Time.deltaTime * moveAcceleration);
+        Vector3 direction = (destination - transform.position).normalized;
+        direction.y = 0f;
+        rb.linearVelocity = direction * moveSpeed;
+
+        pointer.SetActive(Vector3.Distance(transform.position, destination) > 1f);
     }
 }
