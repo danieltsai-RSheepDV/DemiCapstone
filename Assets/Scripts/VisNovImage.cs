@@ -16,6 +16,7 @@ public class VisNovImage : MonoBehaviour
     [YarnCommand("change_image")]
     public void ChangeImage(int index)
     {
+        image.enabled = true;
         image.sprite = images[index];
     }
 }

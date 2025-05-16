@@ -1,0 +1,79 @@
+﻿title: DnD
+---
+Sprout: No way- limited edition Dungeons, Dragons and Deepshit dice! Bet I can D20 my life!
+Roll dice?
+-> Yes
+    <<if dice(2) == 1>>
+        Critical fail. At least the only monsters here are the ones in our head...and the floor.
+    <<else>>
+        Critical success! Seducing those goblins was a piece of cake. If only that charisma extended to our real love life.
+    <<endif>>
+-> No
+    Can't lose if you never play...or win?
+Sprout: I know more about this game now than I did then.
+===
+
+title: Bottles
+---
+*inside, there are several, emptied out tablet bottles.
+Sprout: These would make cool fairylights.
+===
+
+title: Laundry
+---
+* it's a purple, worn-out, over-sized, polyester hoodie. It still smells faintly like lavender and lemon.
+Sprout: Guess you can never own too many.
+===
+
+title: Notebook
+---
+* It's a mini notebook. It reads, "group orgy!". There are doodles of stars, swords, and VERY cursed stick figures.
+Open?
+-> Yes
+    "Is it already crackhead hours? It's only five in the morning."
+-> No
+    <<jump NotebookEnd>>
+Read another?
+-> Yes
+    "D&D&D SUNDAY?! (ง︡'-'︠)ง YALL BETTER PULL UPPP OR I SWEAR IM MAKING YALL FIGHT A SENTIENT CHAIR AGAIN1!1!1!"
+-> No
+    <<jump NotebookEnd>>
+Read another?
+-> Keep reading like a little gremlin
+    "I swear if the password is just ‘password,’ I’m going to lose my shit. :'D" - Sunni
+    A later entry, in fine writing reads, “It’s uncrackable. No one would think to try it.”
+    Another, in scribbly writing reads, “yea sprout. thats why u keep getting hacked. :P” - Sunni
+    Another, even later entry. “Why do you keep signing off on your own entries, cybertech security?”
+-> Close it before you start summoning the chair spirits.
+    <<jump NotebookEnd>>
+Read another?
+-> Keep reading because you’re too far in the trenches to go back now
+    Quote \#696 "look at their sadness, it's so attractive. :0"
+-> Absolutely not
+    <<jump NotebookEnd>>
+Read another?
+-> Slowly descend to further madness as you keep reading this cursed journal
+    "Is that not what friendship is?" and another, later entry, "CoErCiOn??!!"
+-> Put the book down to regain your sanity
+    <<jump NotebookEnd>>
+Read another?
+-> Does this actually have an end?
+    There is atrocious handwriting, it's barely legible. "hey, i love u guys. i'm always gonna b here. thank u for being who u r and where u r."
+-> Dear god let it be over
+    <<jump NotebookEnd>>
+===
+
+title: NotebookEnd
+---
+    Sprout@test: It's for the best. Too much lore...and mildly sadistic, deranged commentary.
+===
+
+title: PhoneConvo
+---
+<<SetShowing UIPhone true>>
+<<wait 3>>
+Pick up?
+-> Yes
+-> Yes
+<<SetShowing UIPhone true>>
+===

@@ -1,10 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class TiltCamera : MonoBehaviour
 {
+    private bool locked = false;
+    
     [SerializeField] private float maxTiltAngleVertical;
     [SerializeField] private float maxTiltAngleHorizontal;
+    
+    [SerializeField] private GameObject cam;
+    [SerializeField] private float slideValue;
+    private float cameraSlideTarget;
     
     private float tiltAngleVertical;
     private float tiltAngleHorizontal;
@@ -36,6 +43,17 @@ public class TiltCamera : MonoBehaviour
         angles.x = defaultAngleVertical - tiltAngleVertical;
         angles.y = defaultAngleHorizontal + tiltAngleHorizontal;
         
-        transform.eulerAngles = angles;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(!locked ? angles : new Vector3(40, -100, 0)), Time.deltaTime * 3f);
+
+        cameraSlideTarget = locked ? slideValue : 0;
+        
+        var vector3 = cam.transform.localPosition;
+        vector3.x = Mathf.Lerp(cam.transform.localPosition.x, cameraSlideTarget, Time.deltaTime * 3f);
+        cam.transform.localPosition = vector3;
+    }
+
+    public void ToggleSlide(bool b)
+    {
+        locked = b;
     }
 }

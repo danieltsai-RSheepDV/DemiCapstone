@@ -5,6 +5,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Outline))]
 public class ClickableObject : MonoBehaviour
 {
+    public static ClickableObject instance;
+    
     public UnityEvent clicked = new UnityEvent();
     
     private Outline outline;
@@ -22,8 +24,7 @@ public class ClickableObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log(name + ": Clicked");
-        clicked.Invoke();
+        instance = this;
     }
 
     private void OnMouseEnter()
@@ -34,5 +35,18 @@ public class ClickableObject : MonoBehaviour
     private void OnMouseExit()
     {
         outline.OutlineWidth = 0f;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<SproutController>())
+        {
+            Debug.Log(other.gameObject.name);
+            if (instance == this)
+            {
+                clicked.Invoke();
+                instance = null;
+            }
+        }
     }
 }

@@ -1,14 +1,10 @@
-﻿title: BattleOptions
+﻿
+title: BattleBegin
 ---
-Start
+Some dialogue
 <<declare $voidHealth = 50>>
 <<declare $sproutHealth = 100>>
 <<declare $attackAmt = 0>>
-
--> Attack
-    <<jump Fight>>
--> Act
-    <<jump Act>>
 ===
 
 title: Fight
@@ -32,13 +28,30 @@ SproutHealth: {$sproutHealth}
 <<if $sproutHealth <= 0>>
     <<jump SproutDeath>>
 <<endif>>
-
-<<jump BattleOptions>>
 ===
 
 title: Act
 ---
-Test
+Used Act
+<<if visited_count("Act") == 0>>
+    Act 1
+<<elseif visited_count("Act") == 1>>
+    Act 2
+<<elseif visited_count("Act") == 2>>
+    Act 3
+<<elseif visited_count("Act") == 3>>
+    Act 4
+<<elseif visited_count("Act") == 4>>
+    Act 5
+<<elseif visited_count("Act") == 5>>
+    Act 6
+    <<jump ActWin>>
+<<endif>>
+===
+
+title: ActWin
+---
+Act Win
 ===
 
 title: SproutDeath
