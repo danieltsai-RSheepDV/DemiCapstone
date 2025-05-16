@@ -46,6 +46,7 @@ public class ClickableObject : MonoBehaviour
             {
                 clicked.Invoke();
                 instance = null;
+                enabled = false;
             }
         }
     }

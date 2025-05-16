@@ -17,6 +17,9 @@ public class CustomLineView : LineView
             case "Sprout":
                 characterImage.sprite = characterSprites[0];
                 break;
+            case "Sunni":
+                characterImage.sprite = characterSprites[1];
+                break;
             default:
                 characterImage.enabled = false;
                 break;

@@ -48,6 +48,7 @@ public class SproutController : MonoBehaviour
                 destination.y = 0f;
                 
                 pointer.transform.position = destination;
+                walking = true;
             }
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 20f);
@@ -57,8 +58,9 @@ public class SproutController : MonoBehaviour
 
         if (walking)
         {
-            rb.linearVelocity = direction * moveSpeed;
-            if (Vector3.Distance(transform.position, destination) > 1f)
+            Debug.Log("walking");
+            rb.linearVelocity = direction * moveSpeed + Vector3.up * rb.linearVelocity.y;
+            if (Vector3.Distance(transform.position, destination) < 2f)
             {
                 walking = false;
             }

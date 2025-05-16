@@ -1,11 +1,20 @@
 ﻿title: Cutscene1Script
 tags:
 ---
+It’s so quiet…
+I can’t even remember why I’m here.
+Who pushed me to go this far in the first place…
+Somewhere along the lines, there was a misstep.
+And since then, I haven’t found a way out.
+Nothing feels like it was. Do you ever feel so trapped by your own loneliness?
+This life, this existence, it’s all wrong. Completely wrong. 
+<<C1ShowVoid DialogueSystem>>
 INFILTRATOR OF REALITIES AND DREAMS...WHY DO YOU TREMBLE AT THE SOUND OF YOUR OWN VOICE?
 HAVE YOU REALIZED THE TRUTH BEHIND YOUR EXISTENCE?
 IT ENDED LONG AGO...DID NOT END...
 IT WAS ALL JUST A STORY. JUST A DREAM.
 YOU WHO HAS NEVER TRULY EXISTED.
 ARE ENTIRELY IMAGINARY.
+<<C1EndVoid DialogueSystem>>
 <<stop>>
 ===
